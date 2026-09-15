@@ -15,6 +15,11 @@
     github:   "M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.5 11.5 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21",
     file:     "M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5",
     map:      "M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11zM12 8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z",
+    facebook: "M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8a1 1 0 0 1 1-1z",
+    xing:     "M5 6h4l3 5-4 7H4l4-7zM19 3l-7 12 4 7h4l-4-7 7-12z",
+    tiktok:   "M15 4c.6 2.4 2.2 3.8 4.5 4v3.2c-1.7 0-3.3-.5-4.5-1.4V16a5.5 5.5 0 1 1-5.5-5.5c.4 0 .7 0 1 .1v3.3a2.3 2.3 0 1 0 1.5 2.1V4z",
+    youtube:  "M3 12c0-2.3.2-3.6.4-4.3A2.6 2.6 0 0 1 5.3 5.9C6.6 5.6 12 5.6 12 5.6s5.4 0 6.7.3a2.6 2.6 0 0 1 1.9 1.8c.2.7.4 2 .4 4.3s-.2 3.6-.4 4.3a2.6 2.6 0 0 1-1.9 1.8c-1.3.3-6.7.3-6.7.3s-5.4 0-6.7-.3a2.6 2.6 0 0 1-1.9-1.8C3.2 15.6 3 14.3 3 12zM10.2 9.4v5.2l4.4-2.6z",
+    shop:     "M4 8h16l-1.2 11a2 2 0 0 1-2 1.8H7.2a2 2 0 0 1-2-1.8zM9 8V6a3 3 0 0 1 6 0v2",
     link:     "M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"
   };
 
@@ -31,9 +36,13 @@
   }
   function tel(n) { return String(n || "").replace(/[^\d+]/g, ""); }
 
-  /* ---------- Profil wählen: ?k=schluessel oder #schluessel ---------- */
+  /* ---------- Profil wählen ----------------------------------------
+     1. window.CARD  – eine Karte je Ordner (Normalfall)
+     2. window.CARDS – Sammeldatei mit ?k=schluessel (Sonderfall)     */
   function pickProfile() {
-    var cfg = window.CARDS || { profiles: {} };
+    if (window.CARD) return window.CARD;
+    var cfg = window.CARDS;
+    if (!cfg || !cfg.profiles) return null;
     var key = new URLSearchParams(location.search).get("k") ||
               location.hash.replace("#", "") ||
               cfg.default;
@@ -56,6 +65,19 @@
   function setMeta(n, v) { var m = document.querySelector('meta[name="' + n + '"]'); if (m) m.content = v; }
   function setMetaProp(n, v) { var m = document.querySelector('meta[property="' + n + '"]'); if (m) m.content = v; }
 
+  /* Markenfarben der Karte (optional) */
+  if (p.theme) {
+    var map = { black: "--black", deep: "--deep", sand: "--sand", sandDim: "--sand-dim",
+                ember: "--ember", emberHi: "--ember-hi" };
+    Object.keys(map).forEach(function (k) {
+      if (p.theme[k]) document.documentElement.style.setProperty(map[k], p.theme[k]);
+    });
+    if (p.theme.black) {
+      var tc = document.querySelector('meta[name="theme-color"]');
+      if (tc) tc.content = p.theme.black;
+    }
+  }
+
   if (p.logo) { $("logo").src = p.logo; } else { $("logo").parentNode.hidden = true; }
   if (p.photo) { $("photo").src = p.photo; $("photo").alt = fullName; $("photo").hidden = false; }
   $("name").textContent = fullName;
@@ -73,6 +95,7 @@
   if (c.email)    quick.push({ icon: "mail",     label: "E-Mail",   href: "mailto:" + c.email });
   if (c.whatsapp) quick.push({ icon: "whatsapp", label: "WhatsApp", href: "https://wa.me/" + tel(c.whatsapp) });
   if (c.website)  quick.push({ icon: "globe",    label: "Website",  href: c.website });
+  $("quick").dataset.n = quick.length;
   $("quick").innerHTML = quick.map(function (q) {
     return '<a href="' + esc(q.href) + '"' + (/^https?:/.test(q.href) ? ' target="_blank" rel="noopener"' : "") + '>' +
            svgIcon(q.icon) + '<span>' + esc(q.label) + '</span></a>';
@@ -98,6 +121,21 @@
   $("footLinks").innerHTML = (p.footer || []).map(function (f) {
     return '<a href="' + esc(f.url || "#") + '">' + esc(f.label) + '</a>';
   }).join("");
+
+  /* Fußzeilen-Signatur (gilt für alle Karten, siehe assets/js/brand.js) */
+  var brand = p.signature || window.BRAND || {};
+  var sig = $("sig");
+  if (sig && brand.label) {
+    sig.textContent = "";
+    if (brand.url) {
+      var sa = document.createElement("a");
+      sa.href = brand.url; sa.target = "_blank"; sa.rel = "noopener";
+      sa.textContent = brand.label;
+      sig.appendChild(sa);
+    } else {
+      sig.textContent = brand.label;
+    }
+  }
 
   $("card").hidden = false;
 
