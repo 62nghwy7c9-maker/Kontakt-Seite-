@@ -100,17 +100,28 @@ Das ist bewusst die Ausnahme und in keiner Karte aktiv.
 
 Zwei Wege, beide funktionieren gleichzeitig:
 
-**NFC-Chip beschreiben.** Die meisten Blanko-Karten enthalten einen NTAG-Chip,
-der sich mit einer App wie „NFC Tools" beschreiben lässt: *Schreiben* →
-*Datensatz hinzufügen* → *URL* → `https://DEINE-DOMAIN/k/kundenname/` →
-*Schreiben*. Anschließend Karte ans Handy halten und prüfen. Wenn die App
-danach „schreibgeschützt" anbietet: erst sperren, wenn die Adresse endgültig
-ist – ein gesperrter Chip lässt sich nicht mehr ändern.
+**NFC-Chip beschreiben – eine kostenlose App reicht.** „NFC Tools" von wakdev
+ist auf iPhone und Android gratis; eine URL zu schreiben gehört zum
+Grundumfang. Die Pro-Edition (rund 4 € einmalig, kein Abo) braucht man nur für
+Zusatzsachen wie Tags kopieren, Passwortschutz oder Automatisierungen.
 
-Zwei Dinge musst du an deinen Karten selbst prüfen, ich kenne sie nicht:
-ob der Chip beschreibbar oder ab Werk auf einen Anbieter gesperrt ist, und
-welchen Chiptyp er hat (davon hängt ab, wie lang die Adresse sein darf –
-kurze Adressen wie oben sind unkritisch).
+Ablauf: App öffnen → *Schreiben* → *Datensatz hinzufügen* → *URL/URI* →
+`https://DEINE-DOMAIN/k/kundenname/` eintragen → *Schreiben* → Karte an die
+Rückseite des Handys halten, bis die Bestätigung kommt. Danach Karte einmal
+mit einem anderen Handy testen.
+
+Voraussetzungen: Handy mit NFC (iPhone 7 oder neuer, die meisten Android-Geräte
+ab Mittelklasse). Die Adresse ist kurz, der Speicher jedes üblichen NTAG-Chips
+reicht dafür locker.
+
+Sperren („schreibgeschützt", „read-only") erst ganz am Ende und nur, wenn die
+Domain endgültig steht – das ist unumkehrbar. Ob diese Funktion in der
+Gratisversion liegt, zeigt die App selbst an.
+
+Ein Punkt bleibt zu prüfen: ob die Chips deiner Karten frei beschreibbar oder
+ab Werk auf einen Anbieter gesperrt sind. Karten, die mit einer eigenen
+Plattform verkauft wurden, sind manchmal fest verdrahtet – dann hilft keine
+App, sondern nur ein neuer Kartenrohling.
 
 **QR-Code aufdrucken.** Die Karte selbst zeigt ihren QR-Code über den Knopf
 *QR-Code*; für den Druck erzeugst du ihn mit einem beliebigen QR-Generator aus
