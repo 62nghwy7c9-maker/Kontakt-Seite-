@@ -120,8 +120,9 @@ h1{
 .role{
   margin:14px 0 0;font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;
   color:var(--ember-hi);
+  display:flex;align-items:center;justify-content:center;gap:.8em;
 }
-.role::before,.role::after{content:"—";opacity:.45;margin:0 .6em}
+.role::before,.role::after{content:"";flex:none;width:24px;height:1px;background:currentColor;opacity:.45}
 .tagline{
   margin:18px 0 0;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;
   font-size:1.18rem;color:var(--sand-dim);

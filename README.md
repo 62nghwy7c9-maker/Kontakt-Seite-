@@ -15,6 +15,7 @@ index.html                 leitet auf die eigene Karte weiter
 k/kira/                    eigene Karte
 k/demo-kunde/              Beispielkunde (zeigt eigene Markenfarben)
 k/_vorlage/                Vorlage – bleibt unangetastet
+editor/                    Karten-Editor im Browser (Formular + Vorschau)
 tools/neue-karte.py        legt neue Kundenkarten an
 assets/css/style.css       Design
 assets/js/app.js           Technik (vCard, Teilen, QR, Farben)
@@ -26,6 +27,28 @@ assets/img/                Logo, Favicon
 Jede Karte ist ein Ordner mit genau zwei Dateien: `index.html` (unverändert)
 und `profil.js` (die Daten). Ein Kunde kann die Daten anderer Kunden nicht
 sehen – seine Seite lädt nur seine eigene Datei.
+
+## Kontaktdaten ändern
+
+Es gibt für jeden Kunden eine eigene Seite, und jede Seite hat genau eine
+Datendatei: `k/<kunde>/profil.js`. Wer eine Nummer ändern will, ändert diese
+eine Datei. Drei Wege, je nachdem wie technisch es sein darf:
+
+**A · Editor im Browser (kein Code).** `https://DEINE-DOMAIN/editor/` öffnen →
+*Bestehende Karte einlesen* → Inhalt der bisherigen `profil.js` einfügen →
+Felder ändern, rechts live sehen → *profil.js herunterladen* oder *Text
+kopieren*. Danach auf GitHub in den Kartenordner gehen, `profil.js` öffnen,
+Stift-Symbol, Inhalt ersetzen, *Commit changes*. Nach ein bis zwei Minuten ist
+die Karte aktuell.
+
+**B · Direkt auf GitHub.** Datei `k/<kunde>/profil.js` öffnen, Stift-Symbol,
+Wert zwischen den Anführungszeichen austauschen, *Commit changes*. Schnellster
+Weg für eine einzelne Telefonnummer.
+
+**C · Lokal.** Datei im Editor ändern, `git commit`, `git push`.
+
+Die Adresse der Karte bleibt bei jeder Änderung gleich – der NFC-Chip muss nie
+neu beschrieben werden.
 
 ## Neue Kundenkarte anlegen
 
@@ -54,16 +77,24 @@ unter `https://DEINE-DOMAIN/k/lena-harkonnen/`.
 Leere Felder verschwinden automatisch – eine Karte ohne WhatsApp zeigt keinen
 WhatsApp-Knopf.
 
-### Farben eines Kunden
+### Einheitliches Design
+
+Alle Karten sehen gleich aus: Dune-Schwarz, Glut-Orange, Dünenkämme und das
+Markenlogo im Kopf. Das Logo liegt einmal unter `assets/img/logo.png` – wird es
+dort ausgetauscht, ändern sich alle Karten gleichzeitig. Die Signatur in der
+Fußzeile steht in `assets/js/brand.js` und gilt ebenfalls für alle Karten.
+
+Der Inhalt unterscheidet sich, das Design nicht. So bleibt jede verkaufte Karte
+sichtbar ein Stück deiner Marke.
+
+Falls für einen Einzelfall doch andere Farben nötig sind, versteht eine Karte
+zusätzlich ein `theme`, das die Hauptfarbe austauscht:
 
 ```js
 theme: { ember: "#3F8F86", emberHi: "#7FD6CF", sand: "#EAF4F3" },
 ```
 
-`ember` ist die Hauptfarbe: Knopf, Symbole, Dünen und Horizontlicht rechnen
-sich daraus ab. Weglassen = Dune-Standard in Schwarz und Glut-Orange.
-Weitere mögliche Schlüssel: `black` (Hintergrund), `deep`, `sand` (Textfarbe),
-`sandDim` (Nebentext).
+Das ist bewusst die Ausnahme und in keiner Karte aktiv.
 
 ## Physische Karte mit der Seite verbinden
 
@@ -110,8 +141,10 @@ python3 -m http.server 8080
 ## Grenzen (bewusst so gebaut)
 
 - Kunden können ihre Daten **nicht selbst ändern**; jede Änderung läuft über
-  dich. Für Selbstbedienung bräuchte es ein Login und eine Datenbank – das ist
-  ein eigener Schritt, kein Nachziehen an dieser Seite.
+  dich – mit dem Editor dauert sie zwei Minuten. Für echte Selbstbedienung
+  bräuchte es Login und Datenbank, also einen eigenen Schritt.
+- Der Editor speichert nichts: Er erzeugt nur den Text der Datei. Erst dein
+  Commit macht die Änderung sichtbar.
 - Es gibt **keine Statistik**, wie oft eine Karte geöffnet wurde.
 - Alle Kundendaten liegen in einem öffentlichen Repository. Was nicht auf der
   Karte stehen darf, gehört auch nicht in `profil.js`.

@@ -10,7 +10,7 @@ window.CARD = {
   company:   "Firma",                 // leer lassen: ""
   tagline:   "",                      // kurzer Satz in Kursiv
   bio:       "",                      // zwei bis drei Zeilen
-  logo:      "",                      // "logo.png" in diesen Ordner legen; leer = kein Logo
+  logo:      "../../assets/img/logo.png",   // Markenlogo – bleibt auf allen Karten gleich
   photo:     "",                      // "portrait.jpg" in diesen Ordner legen
 
   /* --- Kontaktdaten (landen in der gespeicherten Visitenkarte) ------- */
@@ -41,11 +41,6 @@ window.CARD = {
       ]
     }
   ],
-
-  /* --- Farben (optional) -------------------------------------------- */
-  /* Weglassen = Dune-Standard (Schwarz + Glut-Orange).
-     Beispiel für eine Kundenmarke:
-     theme: { ember:"#3FA9A0", emberHi:"#7FD6CF", sand:"#EAF4F3" },        */
 
   /* --- Fusszeile ----------------------------------------------------- */
   footer: [

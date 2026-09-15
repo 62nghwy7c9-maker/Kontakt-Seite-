@@ -40,6 +40,13 @@
      1. window.CARD  – eine Karte je Ordner (Normalfall)
      2. window.CARDS – Sammeldatei mit ?k=schluessel (Sonderfall)     */
   function pickProfile() {
+    /* Vorschau aus dem Editor: Daten liegen im Zwischenspeicher des Browsers */
+    if (/[?&]preview=1/.test(location.search)) {
+      try {
+        var raw = sessionStorage.getItem("CARD_PREVIEW");
+        if (raw) return JSON.parse(raw);
+      } catch (e) { /* Zwischenspeicher gesperrt – dann normale Daten */ }
+    }
     if (window.CARD) return window.CARD;
     var cfg = window.CARDS;
     if (!cfg || !cfg.profiles) return null;
@@ -49,6 +56,17 @@
     return cfg.profiles[key] || cfg.profiles[cfg.default] ||
            cfg.profiles[Object.keys(cfg.profiles)[0]];
   }
+
+  /* Editor schickt neue Daten -> speichern und Vorschau neu zeichnen */
+  window.addEventListener("message", function (ev) {
+    if (!ev.data || ev.data.type !== "card-preview") return;
+    try {
+      var next = JSON.stringify(ev.data.card);
+      if (sessionStorage.getItem("CARD_PREVIEW") === next) return;  /* nichts Neues */
+      sessionStorage.setItem("CARD_PREVIEW", next);
+      location.reload();
+    } catch (e) { /* ignorieren */ }
+  });
 
   var p = pickProfile();
   if (!p) return;

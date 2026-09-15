@@ -6,7 +6,7 @@ window.CARD = {
   company:   "Atelier Nord",
   tagline:   "Handwerk, das bleibt.",
   bio:       "Möbel nach Maß aus Hamburg-Altona.",
-  logo:      "",
+  logo:      "../../assets/img/logo.png",
   photo:     "",
 
   contact: {
@@ -32,8 +32,6 @@ window.CARD = {
       { icon: "file",  label: "Preisliste", sub: "PDF",            url: "#" }
     ]}
   ],
-
-  theme: { ember: "#3F8F86", emberHi: "#7FD6CF", sand: "#EAF4F3" },
 
   footer: [
     { label: "Impressum",   url: "#" },

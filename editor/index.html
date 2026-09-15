@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karten-Editor</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0705">
+<link rel="icon" href="../assets/img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Inter:wght@200;300;400;500&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="editor.css">
+</head>
+<body class="ed">
+
+<header class="ed-top">
+  <img src="../assets/img/logo.png" alt="" class="ed-logo">
+  <div>
+    <h1>Karten-Editor</h1>
+    <p>Daten eintragen, Vorschau prüfen, Datei erzeugen. Kein Code nötig.</p>
+  </div>
+</header>
+
+<div class="ed-wrap">
+
+  <form class="ed-form" id="form" autocomplete="off">
+
+    <fieldset>
+      <legend>1 · Wer ist auf der Karte?</legend>
+      <div class="row2">
+        <label>Vorname <input name="firstName" placeholder="Lena"></label>
+        <label>Nachname <input name="lastName" placeholder="Harkonnen"></label>
+      </div>
+      <div class="row2">
+        <label>Position <input name="role" placeholder="Inhaberin"></label>
+        <label>Firma <input name="company" placeholder="Atelier Nord"></label>
+      </div>
+      <label>Kursivzeile <input name="tagline" placeholder="Handwerk, das bleibt."></label>
+      <label>Kurztext <textarea name="bio" rows="2" placeholder="Möbel nach Maß aus Hamburg-Altona."></textarea></label>
+      <label>Porträtfoto <input name="photo" placeholder="portrait.jpg – Datei in den Kartenordner legen"></label>
+      <p class="hint">Das Markenlogo sitzt auf jeder Karte fest im Kopf. Ein Porträt erscheint darunter.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Kontaktdaten</legend>
+      <p class="hint">Diese Angaben landen im Adressbuch, wenn jemand „Kontakt speichern" drückt. Leere Felder verschwinden von der Karte.</p>
+      <div class="row2">
+        <label>Mobil <input name="mobile" placeholder="+49 170 1234567"></label>
+        <label>Festnetz <input name="phone" placeholder="+49 40 1234567"></label>
+      </div>
+      <div class="row2">
+        <label>E-Mail <input name="email" type="email" placeholder="hallo@firma.de"></label>
+        <label>Website <input name="website" placeholder="https://firma.de"></label>
+      </div>
+      <label>WhatsApp <input name="whatsapp" placeholder="491701234567 – nur Ziffern"></label>
+      <div class="row2">
+        <label>Straße <input name="street" placeholder="Museumstraße 1"></label>
+        <label>PLZ <input name="zip" placeholder="22765"></label>
+      </div>
+      <div class="row2">
+        <label>Ort <input name="city" placeholder="Hamburg"></label>
+        <label>Land <input name="country" value="Deutschland"></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Links</legend>
+      <div id="links"></div>
+      <button type="button" class="btn btn-ghost small" id="addLink">+ Link hinzufügen</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Fußzeile</legend>
+      <div class="row2">
+        <label>Impressum <input name="imprint" placeholder="https://firma.de/impressum"></label>
+        <label>Datenschutz <input name="privacy" placeholder="https://firma.de/datenschutz"></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Adresse der Karte</legend>
+      <label>Ordnername <input name="slug" placeholder="lena-harkonnen"></label>
+      <p class="hint">Ergibt <code id="finalUrl">k/…/</code> – diese Adresse kommt auf den NFC-Chip. Sie darf sich später nicht mehr ändern.</p>
+    </fieldset>
+
+  </form>
+
+  <aside class="ed-side">
+    <div class="phone">
+      <iframe id="preview" title="Vorschau" src="../k/_vorlage/index.html?preview=1"></iframe>
+    </div>
+
+    <div class="ed-out">
+      <div class="ed-actions">
+        <button type="button" class="btn btn-primary small" id="download">profil.js herunterladen</button>
+        <button type="button" class="btn btn-ghost small" id="copy">Text kopieren</button>
+        <button type="button" class="btn btn-ghost small" id="load">Bestehende Karte einlesen</button>
+      </div>
+      <details>
+        <summary>So kommt die Änderung online</summary>
+        <ol class="steps">
+          <li>Datei herunterladen oder Text kopieren.</li>
+          <li>Auf GitHub in den Ordner <code id="pathHint">k/…/</code> gehen.</li>
+          <li><strong>profil.js</strong> öffnen → Stift-Symbol → alten Inhalt ersetzen.</li>
+          <li><em>Commit changes</em> drücken. Nach ein bis zwei Minuten ist die Karte aktuell.</li>
+        </ol>
+      </details>
+      <textarea id="out" spellcheck="false" readonly></textarea>
+    </div>
+  </aside>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog class="qr ed-dialog" id="loadDlg">
+  <h2>Bestehende profil.js einfügen</h2>
+  <textarea id="loadText" rows="10" spellcheck="false" placeholder="Inhalt der Datei hier einfügen"></textarea>
+  <div class="ed-actions">
+    <button type="button" class="btn btn-primary small" id="loadOk">Übernehmen</button>
+    <button type="button" class="btn btn-ghost small" id="loadCancel">Abbrechen</button>
+  </div>
+</dialog>
+
+<script src="editor.js"></script>
+</body>
+</html>
