@@ -76,9 +76,9 @@
 
   /* ---------- Kopf ---------- */
   document.title = fullName + (p.role ? " · " + p.role : "");
-  setMeta("description", p.bio || p.tagline || "Digitale Visitenkarte von " + fullName);
+  setMeta("description", p.bio || "Kontaktdaten von " + fullName);
   setMetaProp("og:title", fullName);
-  setMetaProp("og:description", p.role || p.tagline || "Digitale Visitenkarte");
+  setMetaProp("og:description", [p.role, p.company].filter(Boolean).join(" · ") || "Kontakt");
 
   function setMeta(n, v) { var m = document.querySelector('meta[name="' + n + '"]'); if (m) m.content = v; }
   function setMetaProp(n, v) { var m = document.querySelector('meta[property="' + n + '"]'); if (m) m.content = v; }
@@ -96,13 +96,11 @@
     }
   }
 
-  if (p.logo) { $("logo").src = p.logo; } else { $("logo").parentNode.hidden = true; }
+  if (p.logo) { $("logo").src = p.logo; } else { $("logo").parentNode.hidden = true; }  /* ohne Logo faellt das schwarze Band weg */
   if (p.photo) { $("photo").src = p.photo; $("photo").alt = fullName; $("photo").hidden = false; }
   $("name").textContent = fullName;
   $("role").textContent = [p.role, p.company].filter(Boolean).join(" · ");
   if (!$("role").textContent) $("role").hidden = true;
-  $("tagline").textContent = p.tagline || "";
-  if (!p.tagline) $("tagline").hidden = true;
   $("bio").textContent = p.bio || "";
   if (!p.bio) $("bio").hidden = true;
 
@@ -174,7 +172,6 @@
     if (a.street || a.city) {
       L.push("ADR;TYPE=WORK:;;" + (a.street || "") + ";" + (a.city || "") + ";;" + (a.zip || "") + ";" + (a.country || ""));
     }
-    if (p.tagline) L.push("NOTE:" + p.tagline);
     L.push("SOURCE:" + location.href, "REV:" + new Date().toISOString(), "END:VCARD");
     return L.join("\r\n");
   }

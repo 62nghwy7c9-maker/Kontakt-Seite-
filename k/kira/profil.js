@@ -4,8 +4,7 @@ window.CARD = {
   lastName:  "Moewes",
   role:      "KI-Automatisierung",
   company:   "",
-  tagline:   "Systeme, die ohne mich weiterlaufen.",
-  bio:       "Ich baue Automatisierungen mit KI – von der ersten Idee bis zum System, das im Alltag trägt.",
+  bio:       "",
   logo:      "../../assets/img/logo.png",
   photo:     "",
 

@@ -1,11 +1,10 @@
-/* Beispielkarte eines Kunden – zeigt eigene Markenfarben */
+/* Beispielkarte eines Kunden */
 window.CARD = {
   firstName: "Lena",
   lastName:  "Harkonnen",
   role:      "Inhaberin",
   company:   "Atelier Nord",
-  tagline:   "Handwerk, das bleibt.",
-  bio:       "Möbel nach Maß aus Hamburg-Altona.",
+  bio:       "Möbel nach Maß, Werkstatt in Hamburg-Altona.",
   logo:      "../../assets/img/logo.png",
   photo:     "",
 

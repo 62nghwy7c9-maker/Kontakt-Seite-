@@ -73,7 +73,6 @@
       lastName:  val("lastName"),
       role:      val("role"),
       company:   val("company"),
-      tagline:   val("tagline"),
       bio:       val("bio"),
       logo:      "../../assets/img/logo.png",
       photo:     val("photo"),
@@ -104,7 +103,6 @@
     L.push("  lastName:  " + q(card.lastName) + ",");
     L.push("  role:      " + q(card.role) + ",");
     L.push("  company:   " + q(card.company) + ",");
-    L.push("  tagline:   " + q(card.tagline) + ",");
     L.push("  bio:       " + q(card.bio) + ",");
     L.push("  logo:      " + q(card.logo) + ",");
     L.push("  photo:     " + q(card.photo) + ",");
@@ -210,7 +208,7 @@
     var set = function (n, v) { if (form.elements[n]) form.elements[n].value = v || ""; };
     set("firstName", card.firstName); set("lastName", card.lastName);
     set("role", card.role); set("company", card.company);
-    set("tagline", card.tagline); set("bio", card.bio); set("photo", card.photo);
+    set("bio", card.bio); set("photo", card.photo);
     set("phone", c.phone); set("mobile", c.mobile); set("email", c.email);
     set("website", c.website); set("whatsapp", c.whatsapp);
     set("street", a.street); set("zip", a.zip); set("city", a.city); set("country", a.country || "Deutschland");

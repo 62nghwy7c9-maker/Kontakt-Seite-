@@ -67,7 +67,7 @@ unter `https://DEINE-DOMAIN/k/lena-harkonnen/`.
 | Feld | Bedeutung |
 |---|---|
 | `firstName`, `lastName`, `role`, `company` | Kopf der Karte und Adressbuch-Eintrag |
-| `tagline`, `bio` | Kursivzeile und Kurztext |
+| `bio` | optionale Sachzeile, darf leer bleiben |
 | `logo`, `photo` | Dateien in denselben Ordner legen, Name hier eintragen |
 | `contact` | Telefon, Mobil, E-Mail, Website, WhatsApp, Adresse – landen in der `.vcf` |
 | `groups` | beliebig viele Blöcke mit beliebig vielen Links |
@@ -79,9 +79,14 @@ WhatsApp-Knopf.
 
 ### Einheitliches Design
 
-Alle Karten sehen gleich aus: Dune-Schwarz, Glut-Orange, Dünenkämme und das
-Markenlogo im Kopf. Das Logo liegt einmal unter `assets/img/logo.png` – wird es
-dort ausgetauscht, ändern sich alle Karten gleichzeitig. Die Signatur in der
+Alle Karten sehen gleich aus: Der obere Teil der Seite ist ein komplett
+schwarzes Band, in dem das Markenlogo steht – kein Profilbild, kein Rahmen.
+Darunter beginnt das Dünenbild mit Glut-Orange. Das Logo liegt einmal unter
+`assets/img/logo.png` – wird es dort ausgetauscht, ändern sich alle Karten
+gleichzeitig.
+
+Auf der Karte stehen nur Kontaktdaten und Links. Slogans gibt es nicht; das
+Feld `bio` ist eine optionale Sachzeile und darf leer bleiben. Die Signatur in der
 Fußzeile steht in `assets/js/brand.js` und gilt ebenfalls für alle Karten.
 
 Der Inhalt unterscheidet sich, das Design nicht. So bleibt jede verkaufte Karte

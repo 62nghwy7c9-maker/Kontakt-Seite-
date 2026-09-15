@@ -78,29 +78,34 @@ body::after{ /* Vignette */
   background:radial-gradient(120% 80% at 50% 30%,transparent 40%,rgba(0,0,0,.55) 100%);
 }
 
+/* ---------- Markenband: dieser Teil der Seite ist komplett schwarz ---------- */
+.brandbar{
+  position:relative;z-index:3;
+  background:#000;
+  padding:calc(env(safe-area-inset-top,0px) + 40px) var(--pad) 34px;
+  display:grid;place-items:center;
+}
+.brandbar::after{ /* weicher Übergang ins Dünenbild */
+  content:"";position:absolute;left:0;right:0;bottom:-56px;height:56px;pointer-events:none;
+  background:linear-gradient(#000,transparent);
+}
+.brandmark{
+  width:clamp(74px,23vw,104px);height:auto;display:block;
+  filter:drop-shadow(0 0 26px color-mix(in srgb,var(--ember) 24%,transparent));
+}
+
 /* ---------- Karte ---------- */
 .card{
   position:relative;z-index:2;
   width:min(100%,480px);
   margin:0 auto;
-  padding:calc(env(safe-area-inset-top,0px) + 44px) var(--pad) calc(env(safe-area-inset-bottom,0px) + 56px);
+  padding:46px var(--pad) calc(env(safe-area-inset-bottom,0px) + 56px);
   animation:rise .7s cubic-bezier(.2,.7,.2,1) both;
 }
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* ---------- Kopf ---------- */
 .hero{text-align:center}
-.mark{
-  width:86px;height:86px;margin:0 auto 26px;
-  display:grid;place-items:center;
-  border-radius:50%;
-  border:1px solid var(--line);
-  background:radial-gradient(circle at 50% 40%,color-mix(in srgb,var(--ember) 18%,transparent),transparent 70%);
-  box-shadow:0 0 44px color-mix(in srgb,var(--ember) 20%,transparent);
-  animation:pulse 7s ease-in-out infinite;
-}
-@keyframes pulse{50%{box-shadow:0 0 62px color-mix(in srgb,var(--ember) 34%,transparent)}}
-.mark img{width:54px;height:54px;object-fit:contain;display:block}
 .photo{
   width:104px;height:104px;border-radius:50%;object-fit:cover;
   margin:0 auto 20px;display:block;
@@ -123,10 +128,6 @@ h1{
   display:flex;align-items:center;justify-content:center;gap:.8em;
 }
 .role::before,.role::after{content:"";flex:none;width:24px;height:1px;background:currentColor;opacity:.45}
-.tagline{
-  margin:18px 0 0;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;
-  font-size:1.18rem;color:var(--sand-dim);
-}
 .bio{margin:14px 0 0;font-size:.94rem;color:rgba(242,226,203,.7)}
 
 /* ---------- Aktionen ---------- */

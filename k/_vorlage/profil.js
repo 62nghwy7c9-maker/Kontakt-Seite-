@@ -8,7 +8,6 @@ window.CARD = {
   lastName:  "NACHNAME",
   role:      "Position",              // z. B. "Geschäftsführung"
   company:   "Firma",                 // leer lassen: ""
-  tagline:   "",                      // kurzer Satz in Kursiv
   bio:       "",                      // zwei bis drei Zeilen
   logo:      "../../assets/img/logo.png",   // Markenlogo – bleibt auf allen Karten gleich
   photo:     "",                      // "portrait.jpg" in diesen Ordner legen
