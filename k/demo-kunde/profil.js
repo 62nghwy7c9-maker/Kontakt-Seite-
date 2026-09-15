@@ -26,9 +26,8 @@ window.CARD = {
       { icon: "instagram", label: "Instagram", url: "https://instagram.com/" },
       { icon: "facebook",  label: "Facebook",  url: "https://facebook.com/" }
     ]},
-    { title: "Arbeit", links: [
-      { icon: "shop",  label: "Kollektion", sub: "Online ansehen", url: "https://atelier-nord.example" },
-      { icon: "file",  label: "Preisliste", sub: "PDF",            url: "#" }
+    { title: "Mehr", links: [
+      { icon: "shop", label: "Kollektion", sub: "Online ansehen", url: "https://atelier-nord.example" }
     ]}
   ],
 

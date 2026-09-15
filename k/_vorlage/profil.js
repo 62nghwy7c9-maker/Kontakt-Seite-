@@ -23,8 +23,8 @@ window.CARD = {
   },
 
   /* --- Linkgruppen -------------------------------------------------- */
-  /* icon: phone mail whatsapp globe calendar linkedin instagram
-           facebook xing tiktok youtube github file map shop link     */
+  /* Gruppentitel frei waehlbar. icon: phone mail whatsapp globe calendar
+     linkedin instagram facebook xing tiktok youtube github file map shop link */
   groups: [
     {
       title: "Direkt",

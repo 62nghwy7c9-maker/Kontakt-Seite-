@@ -6,7 +6,7 @@
 
   var ICONS = ["calendar", "mail", "phone", "whatsapp", "globe", "linkedin", "instagram",
                "facebook", "xing", "tiktok", "youtube", "github", "shop", "file", "map", "link"];
-  var GRUPPEN = ["Direkt", "Profile", "Arbeit"];
+  var GRUPPEN = ["Direkt", "Profile", "Mehr"];
 
   var form = document.getElementById("form");
   var linksBox = document.getElementById("links");

@@ -81,7 +81,9 @@ WhatsApp-Knopf.
 
 Alle Karten sehen gleich aus: Der obere Teil der Seite ist ein komplett
 schwarzes Band, in dem das Markenlogo steht – kein Profilbild, kein Rahmen.
-Darunter beginnt das Dünenbild mit Glut-Orange. Das Logo liegt einmal unter
+Darunter beginnt das Dünenbild, zurückhaltend als Silhouette am unteren Rand.
+Die Karte arbeitet mit Haarlinien statt Kacheln, ohne Leuchteffekte und ohne
+Farbverläufe – näher an gedruckter Typografie als an einer Web-Vorlage. Das Logo liegt einmal unter
 `assets/img/logo.png` – wird es dort ausgetauscht, ändern sich alle Karten
 gleichzeitig.
 
