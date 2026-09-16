@@ -23,11 +23,7 @@ window.CARD = {
       { icon: "map",      label: "Werkstatt finden", sub: "Hamburg-Altona",    url: "https://maps.google.com/" }
     ]},
     { title: "Profile", links: [
-      { icon: "instagram", label: "Instagram", url: "https://instagram.com/" },
-      { icon: "facebook",  label: "Facebook",  url: "https://facebook.com/" }
-    ]},
-    { title: "Mehr", links: [
-      { icon: "shop", label: "Kollektion", sub: "Online ansehen", url: "https://atelier-nord.example" }
+      { icon: "instagram", label: "Instagram", url: "https://instagram.com/" }
     ]}
   ],
 
