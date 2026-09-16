@@ -15,7 +15,7 @@ window.CARD = {
 
   contact: {
     phone:    "+49 2237 9232340",      // seine Durchwahl
-    mobile:   "",                      // TODO: Durchwahl oder Mobilnummer von ihm
+    mobile:   "",                      // TODO: Mobilnummer, falls er eine auf der Karte will
     email:    "info@planvoller.de",    // TODO: falls er eine eigene Adresse hat
     website:  "https://planvoller.de",
     whatsapp: "",                      // nur wenn er das ausdrücklich will
