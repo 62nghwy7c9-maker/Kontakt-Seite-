@@ -33,7 +33,18 @@
         <stop offset="100%" stop-color="var(--ember-hi)" stop-opacity="0"/>
       </linearGradient>
       <filter id="soft" x="-20%" y="-60%" width="140%" height="260%"><feGaussianBlur stdDeviation="3"/></filter>
+      <radialGradient id="disc" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="var(--ember-hi)"/>
+        <stop offset="70%" stop-color="var(--ember)"/>
+        <stop offset="100%" stop-color="var(--ember-lo)"/>
+      </radialGradient>
+      <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+        <stop offset="55%" stop-color="var(--ember)" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="var(--ember)" stop-opacity="0"/>
+      </radialGradient>
     </defs>
+    <circle class="halo" cx="740" cy="600" r="260" fill="url(#halo)"/>
+    <circle class="disc" cx="740" cy="600" r="120" fill="url(#disc)"/>
     <path fill="url(#d1)" d="M0 612c210-62 352 16 556-22 214-40 330-138 520-116 138 16 250 78 364 96v330H0Z"/>
     <path class="crest" fill="none" stroke="url(#crest)" stroke-width="2.5" filter="url(#soft)" d="M0 612c210-62 352 16 556-22 214-40 330-138 520-116 138 16 250 78 364 96"/>
     <path fill="url(#d2)" d="M0 716c188-96 336-52 520-10 206 47 356-4 512-62 118-44 254-40 408 6v250H0Z"/>
