@@ -14,7 +14,7 @@ window.CARD = {
   photo:     "",                       // "portrait.jpg" in diesen Ordner legen
 
   contact: {
-    phone:    "+49 2273 9918151",      // Büro Kerpen
+    phone:    "+49 2237 9232340",      // seine Durchwahl
     mobile:   "",                      // TODO: Durchwahl oder Mobilnummer von ihm
     email:    "info@planvoller.de",    // TODO: falls er eine eigene Adresse hat
     website:  "https://planvoller.de",
