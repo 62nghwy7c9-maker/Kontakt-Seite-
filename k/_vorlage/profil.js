@@ -29,7 +29,7 @@ window.CARD = {
     {
       title: "Direkt",
       links: [
-        { icon: "calendar", label: "Termin buchen", sub: "", url: "" }
+        { icon: "globe", label: "Website", sub: "", url: "" }
       ]
     },
     {

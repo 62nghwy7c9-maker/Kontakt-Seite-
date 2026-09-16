@@ -19,7 +19,6 @@ window.CARD = {
 
   groups: [
     { title: "Direkt", links: [
-      { icon: "calendar", label: "Beratungstermin", sub: "kostenlos, 30 Min.", url: "https://cal.com/" },
       { icon: "map",      label: "Werkstatt finden", sub: "Hamburg-Altona",    url: "https://maps.google.com/" }
     ]},
     { title: "Profile", links: [
