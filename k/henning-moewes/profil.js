@@ -24,9 +24,9 @@ window.CARD = {
 
   groups: [
     {
-      title: "Direkt",
+      title: "Kontakt",
       links: [
-        { icon: "globe", label: "Planvoller", sub: "Wohn- und Hausbau", url: "https://planvoller.de" }
+        { icon: "mail", label: "E-Mail schreiben", sub: "info@planvoller.de", url: "mailto:info@planvoller.de" }
       ]
     },
     {

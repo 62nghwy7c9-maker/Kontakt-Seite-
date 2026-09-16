@@ -189,15 +189,62 @@
     toast("Visitenkarte wird gespeichert");
   });
 
-  /* ---------- Teilen ---------- */
-  $("shareBtn").addEventListener("click", function () {
-    var data = { title: fullName, text: p.role || "Kontakt", url: location.href };
-    if (navigator.share) {
-      navigator.share(data).catch(function () {});
-    } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(location.href).then(function () { toast("Link kopiert"); });
+  /* ---------- Teilen ----------
+     Reihenfolge: Teilen-Menue des Handys -> Zwischenablage -> Link zum Abschreiben.
+     Jeder Schritt meldet sich, damit der Knopf nie stumm bleibt.                */
+  function linkDialog() {
+    var d = document.createElement("dialog");
+    d.className = "qr";
+    d.setAttribute("aria-label", "Link dieser Karte");
+    var inp = document.createElement("input");
+    inp.readOnly = true;
+    inp.value = location.href;
+    inp.style.cssText = "width:100%;padding:11px 12px;border:1px solid var(--line-strong);" +
+      "border-radius:var(--r);background:#000;color:var(--sand);font:inherit;font-size:.82rem;text-align:center";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn btn-ghost";
+    btn.style.marginTop = "14px";
+    btn.textContent = "Schließen";
+    btn.addEventListener("click", function () { d.close ? d.close() : d.remove(); });
+    d.appendChild(inp);
+    d.appendChild(btn);
+    document.body.appendChild(d);
+    if (d.showModal) { d.showModal(); } else { d.setAttribute("open", ""); }
+    inp.focus();
+    inp.setSelectionRange(0, inp.value.length);
+    d.addEventListener("close", function () { d.remove(); });
+    toast("Link markiert – kopieren");
+  }
+
+  function copyLink() {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(location.href).then(
+        function () { toast("Link kopiert"); },
+        linkDialog
+      );
     } else {
-      toast(location.href);
+      linkDialog();
+    }
+  }
+
+  $("shareBtn").addEventListener("click", function () {
+    var data = {
+      title: fullName,
+      text: [p.role, p.company].filter(Boolean).join(" · ") || "Kontakt",
+      url: location.href
+    };
+    if (!navigator.share || (navigator.canShare && !navigator.canShare(data))) { copyLink(); return; }
+    try {
+      var res = navigator.share(data);
+      if (res && res.then) {
+        res.then(null, function (err) {
+          if (err && err.name === "AbortError") return;   /* Nutzer hat abgebrochen */
+          copyLink();                                     /* z. B. im eingebetteten Fenster gesperrt */
+        });
+      }
+    } catch (e) {
+      copyLink();
     }
   });
 
