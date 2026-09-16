@@ -1,13 +1,13 @@
 /* ---------------------------------------------------------------------------
    Kundenkarte: Henning Moewes – alle Daten dieser einen Karte.
-   Quellen: planvoller.de, Impressum, LinkedIn-Profil (Stand: September 2026).
+   Quelle: planvoller.de und Impressum (Stand: September 2026).
    Vor dem Beschreiben der NFC-Karte mit ihm durchgehen – die mit TODO
    markierten Felder kenne ich nicht.
 --------------------------------------------------------------------------- */
 window.CARD = {
   firstName: "Henning",
   lastName:  "Moewes",
-  role:      "Projektierung und Vertrieb",
+  role:      "Projektierung und Vertrieb",   // TODO: Funktionsbezeichnung mit ihm abstimmen
   company:   "Planvoller GmbH",
   bio:       "Neubauimmobilien vom Grundstück bis zur Übergabe. Standort Kerpen.",
   logo:      "../../assets/img/logo.png",
@@ -27,12 +27,6 @@ window.CARD = {
       title: "Kontakt",
       links: [
         { icon: "mail", label: "E-Mail schreiben", sub: "info@planvoller.de", url: "mailto:info@planvoller.de" }
-      ]
-    },
-    {
-      title: "Profile",
-      links: [
-        { icon: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/henning-moewes-376595150/" }
       ]
     }
   ],
