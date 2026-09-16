@@ -16,7 +16,7 @@ window.CARD = {
   contact: {
     phone:    "+49 2237 9232340",      // seine Durchwahl
     mobile:   "",                      // TODO: Mobilnummer, falls er eine auf der Karte will
-    email:    "info@planvoller.de",    // TODO: falls er eine eigene Adresse hat
+    email:    "info@planvoller.de",    // von ihm bestaetigt
     website:  "https://planvoller.de",
     whatsapp: "",                      // nur wenn er das ausdrücklich will
     address:  { street: "Ottostraße 4a", zip: "50170", city: "Kerpen", country: "Deutschland" }
