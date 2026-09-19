@@ -166,10 +166,10 @@ body::after{
 @keyframes rise{from{opacity:0}to{opacity:1}}
 
 /* ---------- Kopf ---------- */
-.hero{text-align:left}
+.hero{text-align:center}
 .photo{
   width:92px;height:92px;border-radius:50%;object-fit:cover;
-  margin:0 0 24px;display:block;
+  margin:0 auto 24px;display:block;
   filter:grayscale(.25) contrast(1.05);
 }
 h1{
@@ -186,8 +186,8 @@ h1{
   color:var(--sand-dim);font-weight:400;
 }
 .bio{
-  margin:22px 0 0;font-size:.94rem;color:rgba(239,230,218,.72);
-  max-width:38ch;
+  margin:22px auto 0;font-size:.94rem;color:rgba(239,230,218,.72);
+  max-width:36ch;
 }
 
 /* ---------- Aktionen ---------- */
