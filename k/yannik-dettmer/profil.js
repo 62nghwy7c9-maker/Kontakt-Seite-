@@ -22,15 +22,9 @@ window.CARD = {
     address:  { street: "Am Keuschenend 59", zip: "50170", city: "Kerpen", country: "Deutschland" }
   },
 
-  groups: [
-    {
-      title: "Kontakt",
-      links: [
-        { icon: "mail",  label: "E-Mail schreiben", sub: "y.dettmer@andrys-advisory.de", url: "mailto:y.dettmer@andrys-advisory.de" },
-        { icon: "globe", label: "Andrys Advisory",  sub: "Digitale Transformation",      url: "https://andrys-advisory.de" }
-      ]
-    }
-  ],
+  /* Telefon, E-Mail und Website stehen automatisch oben unter "Kontakt".
+     Hier kommen nur zusaetzliche Links hinein, etwa Profile oder Termine. */
+  groups: [],
 
   footer: [
     { label: "Impressum",   url: "https://andrys-advisory.de/impressum/" },

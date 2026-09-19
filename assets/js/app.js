@@ -104,33 +104,38 @@
   $("bio").textContent = p.bio || "";
   if (!p.bio) $("bio").hidden = true;
 
-  /* ---------- Schnellaktionen ---------- */
-  var quick = [];
-  var num = c.mobile || c.phone;
-  if (num)        quick.push({ icon: "phone",    label: "Anrufen",  href: "tel:" + tel(num) });
-  if (c.email)    quick.push({ icon: "mail",     label: "E-Mail",   href: "mailto:" + c.email });
-  if (c.whatsapp) quick.push({ icon: "whatsapp", label: "WhatsApp", href: "https://wa.me/" + tel(c.whatsapp) });
-  if (c.website)  quick.push({ icon: "globe",    label: "Website",  href: c.website });
-  $("quick").dataset.n = quick.length;
-  $("quick").innerHTML = quick.map(function (q) {
-    return '<a href="' + esc(q.href) + '"' + (/^https?:/.test(q.href) ? ' target="_blank" rel="noopener"' : "") + '>' +
-           svgIcon(q.icon) + '<span>' + esc(q.label) + '</span></a>';
-  }).join("");
+  /* ---------- Kontaktzeilen aus den Stammdaten ----------
+     Telefon, E-Mail und Website stehen als eigene Gruppe ganz oben — mit dem
+     tatsaechlichen Wert darunter. Doppelte Eintraege in "groups" entfallen. */
+  function host(u) {
+    return String(u || "").replace(/^https?:\/\//, "").replace(/\/+$/, "");
+  }
 
-  /* ---------- Linkgruppen ---------- */
+  var kontakt = [];
+  if (c.mobile)   kontakt.push({ icon: "phone",    label: "Mobil",     sub: c.mobile, url: "tel:" + tel(c.mobile) });
+  if (c.phone)    kontakt.push({ icon: "phone",    label: "Telefon",   sub: c.phone,  url: "tel:" + tel(c.phone) });
+  if (c.whatsapp) kontakt.push({ icon: "whatsapp", label: "WhatsApp",  sub: "Nachricht senden", url: "https://wa.me/" + tel(c.whatsapp) });
+  if (c.email)    kontakt.push({ icon: "mail",     label: "E-Mail",    sub: c.email,  url: "mailto:" + c.email });
+  if (c.website)  kontakt.push({ icon: "globe",    label: "Website",   sub: host(c.website), url: c.website });
+
+  /* ---------- Alle Gruppen zeichnen ---------- */
+  var alleGruppen = (kontakt.length ? [{ title: "Kontakt", links: kontakt }] : [])
+                      .concat(p.groups || []);
+
   var n = 0;
-  $("groups").innerHTML = (p.groups || []).map(function (g) {
-    var items = (g.links || []).map(function (l) {
+  $("groups").innerHTML = alleGruppen.map(function (g) {
+    var items = (g.links || []).filter(function (l) { return l.label && l.url; }).map(function (l) {
       n++;
       var ext = /^https?:/.test(l.url || "");
-      return '<li><a class="link" style="animation-delay:' + (n * 45) + 'ms" href="' + esc(l.url || "#") + '"' +
+      return '<li><a class="link" style="animation-delay:' + (n * 40) + 'ms" href="' + esc(l.url) + '"' +
              (ext ? ' target="_blank" rel="noopener"' : "") + '>' +
              svgIcon(l.icon) +
              '<span class="link-text"><span class="link-label">' + esc(l.label) + '</span>' +
              (l.sub ? '<span class="link-sub">' + esc(l.sub) + '</span>' : "") + '</span>' +
              '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></li>';
     }).join("");
-    return '<div class="group">' + (g.title ? '<h2>' + esc(g.title) + '</h2>' : "") + '<ul>' + items + '</ul></div>';
+    return items ? '<div class="group">' + (g.title ? '<h2>' + esc(g.title) + '</h2>' : "") +
+                   '<ul>' + items + '</ul></div>' : "";
   }).join("");
 
   /* ---------- Fusszeile ---------- */

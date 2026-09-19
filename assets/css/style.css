@@ -206,19 +206,6 @@ h1{
 .btn-ghost{border-color:var(--line-strong);color:var(--sand)}
 .btn-ghost:hover{border-color:var(--sand-dim);background:rgba(239,230,218,.04)}
 
-.quick{display:grid;grid-template-columns:repeat(2,1fr);margin-top:26px;border-top:1px solid var(--line)}
-.quick[data-n="1"],.quick[data-n="3"]{grid-template-columns:repeat(2,1fr)}
-.quick a{
-  display:flex;align-items:center;gap:10px;
-  padding:15px 2px;text-decoration:none;color:var(--sand);
-  border-bottom:1px solid var(--line);
-  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
-  transition:color .2s ease;
-}
-.quick a:nth-child(odd){padding-right:16px;border-right:1px solid var(--line)}
-.quick a:nth-child(even){padding-left:16px}
-.quick a:hover{color:var(--ember-hi)}
-.quick .i{width:15px;height:15px;color:var(--ember)}
 
 /* ---------- Linkgruppen ---------- */
 .groups{margin-top:44px;display:grid;gap:34px}

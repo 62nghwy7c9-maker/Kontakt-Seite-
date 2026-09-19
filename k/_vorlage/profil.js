@@ -22,16 +22,12 @@ window.CARD = {
     address:  { street: "", zip: "", city: "", country: "Deutschland" }
   },
 
-  /* --- Linkgruppen -------------------------------------------------- */
+  /* --- Zusaetzliche Links -------------------------------------------
+     Telefon, E-Mail und Website oben muessen hier NICHT wiederholt werden;
+     die stehen automatisch unter "Kontakt". Hier nur Profile, Termine usw. */
   /* Gruppentitel frei waehlbar. icon: phone mail whatsapp globe calendar
      linkedin instagram facebook xing tiktok youtube github file map shop link */
   groups: [
-    {
-      title: "Direkt",
-      links: [
-        { icon: "globe", label: "Website", sub: "", url: "" }
-      ]
-    },
     {
       title: "Profile",
       links: [
