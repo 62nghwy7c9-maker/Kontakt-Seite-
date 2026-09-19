@@ -45,7 +45,13 @@ die Karte aktuell.
 Wert zwischen den Anführungszeichen austauschen, *Commit changes*. Schnellster
 Weg für eine einzelne Telefonnummer.
 
-**C · Lokal.** Datei im Editor ändern, `git commit`, `git push`.
+**C · Lokal.** Datei im Editor ändern, dann `python3 tools/stempel.py`, `git commit`, `git push`.
+
+**Wichtig bei jeder Änderung:** Handys speichern Seiten zwischen und zeigen
+sonst tagelang die alte Fassung. `tools/stempel.py` hängt einen frischen
+Zeitstempel an jede eingebundene Datei und erzwingt damit das Neuladen.
+Wer über die GitHub-Oberfläche arbeitet, bearbeitet zusätzlich die
+`index.html` der betroffenen Karte und ändert dort die Zahl hinter `?v=`.
 
 Die Adresse der Karte bleibt bei jeder Änderung gleich – der NFC-Chip muss nie
 neu beschrieben werden.
