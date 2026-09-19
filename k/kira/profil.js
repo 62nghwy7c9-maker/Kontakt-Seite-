@@ -1,8 +1,8 @@
-/* Eigene Karte – Kira */
+/* Eigene Karte – Kira Moewes */
 window.CARD = {
   firstName: "Kira",
   lastName:  "Moewes",
-  role:      "KI-Automatisierung",
+  role:      "",                      // bewusst leer – ergaenzen, wenn du magst
   company:   "",
   bio:       "",
   logo:      "../../assets/img/logo.png",
@@ -10,31 +10,17 @@ window.CARD = {
 
   contact: {
     phone:    "",
-    mobile:   "",                       // TODO: eigene Nummer
-    email:    "",                       // TODO: eigene Adresse
+    mobile:   "+49 1520 1560005",
+    email:    "kira.moewes@gmail.com",
     website:  "",
-    whatsapp: "",
+    whatsapp: "",                     // Nummer waere dann oeffentlich
     address:  { street: "", zip: "", city: "", country: "Deutschland" }
   },
 
-  groups: [
-    {
-      title: "Direkt",
-      links: [
-        { icon: "calendar", label: "Termin buchen", sub: "15 Min. Kennenlernen", url: "" }
-      ]
-    },
-    {
-      title: "Profile",
-      links: [
-        { icon: "linkedin",  label: "LinkedIn",  url: "" },
-        { icon: "instagram", label: "Instagram", url: "" }
-      ]
-    }
-  ],
+  /* Zusaetzliche Links – Telefon und E-Mail stehen automatisch oben. */
+  groups: [],
 
-  footer: [
-    { label: "Impressum",   url: "" },
-    { label: "Datenschutz", url: "" }
-  ]
+  /* Sobald du gewerblich verkaufst, gehoeren hier Impressum und
+     Datenschutz hinein; leere Eintraege zeigt die Karte nicht an. */
+  footer: []
 };
